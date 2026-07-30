@@ -1,263 +1,389 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>트래블월렛 · 국내에서 더 편하게 쓰기</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QR결제도 트래블월렛은 달라!</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddigital/wanted-sans@1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
-  :root{
-    --blue:#0baeff;
-    --dark:#333;
-    --ink:#212121;
-    --grey:#f0f0f0;
-    --skyfill:#c5eefe;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    background:#e9eef1;
-    font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;
-    display:flex;justify-content:center;
-    -webkit-font-smoothing:antialiased;
+  /* Full-width sections: background colors fill the whole viewport width,
+     while content stays centered. */
+  .page {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 120px;
   }
-  /* Korean-display fallback for the Kakao brand fonts */
-  .kakao{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo',sans-serif;}
+  .wanted { font-family: 'Wanted Sans Variable', 'Wanted Sans', 'Pretendard', sans-serif; }
 
-  .page{
-    width:375px;background:#fff;min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;
-    padding-bottom:50px;overflow:hidden;
+  /* ---------- Section 1: Hero ---------- */
+  .hero {
+    width: 100%;
+    background: #2175f3;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .hero-inner {
+    width: 315px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .hero-text { width: 100%; text-align: center; color: #fff; display: flex; flex-direction: column; gap: 4px; }
+  .hero-text .eyebrow { font-weight: 600; font-size: 18px; line-height: 36px; }
+  .hero-text .headline { font-weight: 700; font-size: 30px; line-height: 36px; }
+  .hero-text .headline .accent { color: #f7e47d; }
+  .hero-img { width: 300px; height: 186px; }
+  .hero-img img { width: 100%; height: 100%; object-fit: contain; }
 
-  /* ---------- header ---------- */
-  header{
-    width:100%;
-    background:linear-gradient(to bottom,#91daff 0%,#ffffff 100%);
-    display:flex;flex-direction:column;align-items:center;
-    gap:27px;padding:50px 0 30px;
-    overflow:hidden;
+  /* ---------- Section 2: Quiz ---------- */
+  .quiz {
+    width: 100%;
+    background: #e7f3fa;
+    padding: 40px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
   }
-  .title-block{
-    width:256px;display:flex;flex-direction:column;align-items:center;gap:14px;
-  }
-  .subtitle{
-    color:#555;font-size:20px;text-align:center;letter-spacing:-1.4px;
-    line-height:26px;font-weight:700;
-  }
-  .headline{
-    display:flex;align-items:center;justify-content:center;gap:6px;
-  }
-  .headline .pay{height:35px;width:auto;display:block;}
-  .headline .txt{
-    font-size:37px;font-weight:800;color:#000;line-height:36px;letter-spacing:-1px;
-  }
+  .quiz-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .quiz-head .quiz-label { font-weight: 700; font-size: 18px; color: #0baeff; }
+  .quiz-head .quiz-q { font-weight: 700; font-size: 22px; line-height: 28px; color: #000; }
+  .quiz-head .quiz-q .accent { color: #0baeff; }
+  .quiz-head .quiz-sub { font-weight: 400; font-size: 16px; line-height: 28px; color: #555; margin-top: 8px; }
+  .quiz-head .quiz-sub b { font-weight: 700; }
+  .quiz-cards { display: flex; gap: 10px; }
+  .quiz-cards .card-o { width: 111px; height: 112px; }
+  .quiz-cards .card-x { width: 110px; height: 112px; }
+  .quiz-cards img { width: 100%; height: 100%; object-fit: contain; }
+  .quiz-cards .card-o img,
+  .quiz-cards .card-x img { cursor: pointer; }
 
-  .iphone-scene{
-    position:relative;width:790px;height:370px;margin:0 auto;flex:none;
+  /* ---------- Section 3: Savings ---------- */
+  .savings {
+    width: 100%;
+    background: #fff;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .iphone-scene>*{position:absolute;}
-  .logo-faint{
-    left:159px;top:68px;width:542px;height:142px;
-    opacity:.15;object-fit:cover;pointer-events:none;
-  }
-  .shadow{
-    left:245px;top:0;width:234.565px;height:353.297px;
-    mix-blend-mode:multiply;object-fit:fill;pointer-events:none;
-  }
-  .iphone{
-    left:300.626px;top:12.621px;width:150.705px;height:312.255px;
-    object-fit:fill;pointer-events:none;
-  }
-  .screen{
-    left:306.414px;top:17.429px;width:139.119px;height:302.259px;
-    border-radius:18px;object-fit:fill;pointer-events:none;
-  }
-  .card{
-    left:515.578px;top:133.409px;width:138.578px;height:193.545px;
-    display:flex;align-items:center;justify-content:center;
-    pointer-events:none;
-  }
-  .card .inner{
-    transform:rotate(98.28deg);
-    width:179px;height:114px;border-radius:8px;
-    border:.5px solid #f0f0f0;
-    box-shadow:-5px 15px 17px 0 rgba(0,0,0,.3);
-    overflow:hidden;
-  }
-  .card .inner img{width:100%;height:100%;object-fit:cover;display:block;}
-
-  /* ---------- contents ---------- */
-  .contents{
-    width:312px;display:flex;flex-direction:column;align-items:center;
-  }
-  .section{
-    width:100%;display:flex;flex-direction:column;align-items:center;
-    gap:36px;padding:40px 0;
-  }
-  .step-head{
-    width:100%;display:flex;flex-direction:column;align-items:center;gap:18px;
-  }
-  .badge{
-    background:var(--dark);color:#fff;font-size:16px;font-weight:600;
-    letter-spacing:-.32px;padding:6px 14px;border-radius:50px;white-space:nowrap;
-  }
-  .lead{
-    font-size:20px;text-align:center;color:var(--ink);letter-spacing:-1px;
-    line-height:1.3;font-weight:400;
-  }
-  .lead b{color:var(--blue);font-weight:700;}
-
-  .imgbox{
-    width:312px;height:220px;border-radius:20px;background:var(--grey);
-    position:relative;overflow:hidden;
-  }
-  .imgbox .fill{width:100%;height:100%;object-fit:cover;display:block;}
-
-  .btn{
-    width:100%;border-radius:50px;display:flex;align-items:center;justify-content:center;
-    font-size:18px;font-weight:500;padding:16px;cursor:pointer;border:none;
-    text-decoration:none;
-  }
-  .btn-dark{background:var(--dark);color:#fff;}
-  .btn-white{background:#fff;color:var(--blue);}
-
-  .stack{width:100%;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;}
-
-  /* step2 store illustration (CSS reconstruction) */
-  .store-scene{position:absolute;inset:0;}
-  .store{
-    position:absolute;left:34px;top:70px;width:156px;height:120px;
-  }
-  .store .roof{
-    position:absolute;top:0;left:0;width:156px;height:36px;background:#43484b;border-radius:8px;
-  }
-  .store .body{
-    position:absolute;top:44px;left:6px;width:144px;height:74px;background:#b2dff0;border-radius:8px;
-  }
-  .store .door{
-    position:absolute;bottom:0;left:44px;width:60px;height:74px;background:#fff;
-    border:4px solid #43484b;border-radius:15px 15px 0 0;
-  }
-  .store .flag{
-    position:absolute;top:-6px;left:118px;width:16px;height:16px;background:#ffeb00;
-    border:1px solid #ffc33a;border-radius:2px;
-  }
-  .bubble{
-    position:absolute;right:18px;top:26px;width:124px;height:124px;background:#ffeb00;
-    border:2px solid #f3d126;border-radius:15px;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  }
-  .bubble .b1{font-size:21px;font-weight:800;color:#000;line-height:27px;}
-  .bubble .b2{font-size:21px;font-weight:400;color:#000;line-height:27px;}
-  .bubble .paylogo{height:20px;width:auto;}
-  .plus{
-    position:absolute;left:138px;top:212px;width:36px;height:36px;z-index:5;
+  .savings-inner { width: 315px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .sec-title { font-weight: 700; font-size: 20px; line-height: 28px; color: #2d2f34; text-align: center; }
+  .sec-title .accent { color: #0baeff; }
+  .save-list { width: 290px; display: flex; flex-direction: column; gap: 8px; }
+  .save-card { background: #f7f7f7; border-radius: 12px; padding: 16px 20px; }
+  .save-card .row { display: flex; align-items: center; gap: 16px; }
+  .save-card .icon { width: 30px; height: 30px; flex-shrink: 0; }
+  .save-card .icon img { width: 100%; height: 100%; object-fit: contain; }
+  .save-card .txt { display: flex; flex-direction: column; gap: 4px; }
+  .save-card .txt .main { font-weight: 600; font-size: 16px; color: #2d2f34; }
+  .save-card .txt .main .accent { color: #0baeff; }
+  .save-card .txt .sub { font-weight: 500; font-size: 14px; color: #72757c; }
+  .cta {
+    width: 312px; height: 56px;
+    background: #0baeff;
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    cursor: pointer;
   }
 
-  /* promo card */
-  .promo{
-    width:100%;background:var(--skyfill);border-radius:20px;
-    display:flex;flex-direction:column;align-items:center;gap:20px;
-    padding:30px 20px;
+  /* ---------- Section 4: Currency use ---------- */
+  .currency {
+    width: 100%;
+    background: #e7f3fa;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
-  .promo .ttl{
-    font-size:22px;font-weight:700;color:var(--ink);text-align:center;
-    letter-spacing:-1.1px;line-height:30px;
+  .currency-img { width: 288px; height: 155px; }
+  .currency-img img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* ---------- Section 5: Steps ---------- */
+  .steps {
+    width: 100%;
+    background: #fff;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
-  .promo .ttl b{color:var(--blue);font-weight:700;}
-  .coins{position:relative;width:150px;height:82px;}
-  .coins .bag{position:absolute;left:28px;top:1.6px;width:80px;height:80px;object-fit:contain;}
-  .coins .s1{position:absolute;left:93px;top:0;width:30px;height:30px;transform:rotate(13.39deg);}
-  .coins .s2{position:absolute;left:0;top:13px;width:30px;height:30px;transform:rotate(-15.9deg);}
+  .steps-body { width: 100%; max-width: 375px; padding: 0 36px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .steps-list { width: 287px; display: flex; flex-direction: column; gap: 12px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; }
+  .step .num { font-weight: 600; font-size: 22px; color: #72757c; width: 11px; text-align: center; line-height: 24px; }
+  .step .desc { font-weight: 600; font-size: 16px; line-height: 24px; color: #2d2f34; display: flex; align-items: center; }
+  .step .desc .accent { color: #0baeff; }
+  .paypay-img { width: 300px; height: 257px; }
+  .paypay-img img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* ---------- Section 6: Bottom button ---------- */
+  .bottom-cta {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 375px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    z-index: 500;
+  }
+  .bottom-cta button {
+    width: 100%;
+    max-width: 343px;
+    background: #0baeff;
+    box-shadow: 0 6px 20px rgba(11, 174, 255, 0.45);
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  /* ---------- Image popup modal ---------- */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .popup-overlay.open { display: flex; }
+  .popup-content { position: relative; max-width: 400px; width: 100%; }
+  .popup-content img { width: 100%; height: auto; border-radius: 12px; display: block; }
+  .popup-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    color: #333;
+    cursor: pointer;
+  }
+
+  /* ---------- Text popup (retry) ---------- */
+  .text-popup {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px 24px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .text-popup p {
+    font-weight: 600;
+    font-size: 18px;
+    color: #2d2f34;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+  .text-popup button {
+    width: 100%;
+    height: 48px;
+    background: #0baeff;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <div class="title-block">
-      <div class="subtitle kakao">트래블월렛<br>국내에서 더 편하게 쓰기</div>
-      <div class="headline">
-        <img class="pay" src="http://localhost:3845/assets/8499c7588b9823c92aa9f71238b5e53ac19bef12.svg" alt="pay">
-        <span class="txt kakao">할게요!</span>
-      </div>
-    </div>
-
-    <div class="iphone-scene">
-      <img class="logo-faint" src="http://localhost:3845/assets/ec2df6ac1acabe0fdd995e050bffc74b7485a382.png" alt="">
-      <img class="shadow" src="http://localhost:3845/assets/acb219c1cc5d07ec1997ec8d66569f47dc881099.png" alt="">
-      <img class="iphone" src="http://localhost:3845/assets/8893417f2eeeb496e724dd2d03db355c0c432fbb.png" alt="">
-      <img class="screen" src="http://localhost:3845/assets/d267cdb60357f4c300508871e122bfb184b01b5d.png" alt="">
-      <div class="card"><div class="inner">
-        <img src="http://localhost:3845/assets/6ac6719cf9e65fb2f33e4aec27f0429cd5ffd3d5.png" alt="트래블월렛 카드">
-      </div></div>
-    </div>
-  </header>
-
-  <!-- CONTENTS -->
-  <div class="contents">
-
-    <!-- STEP 1 -->
-    <section class="section">
-      <div class="step-head">
-        <div class="badge">1 단계</div>
-        <div class="lead kakao">
-          카카오페이 앱에서 <b>트래블월렛 실물카드</b><br>
-          혹은 <b>모바일카드</b>를 <b>등록</b>해 주세요.
+  <!-- Section 1: Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">QR결제도 트래블월렛은 달라!</p>
+        <div class="headline">
+          <p>이제 <span class="accent">당신의 여행</span>을</p>
+          <p>더 편리하게</p>
         </div>
       </div>
-      <div class="imgbox">
-        <img class="fill" src="http://localhost:3845/assets/46bfc745bbad4b5262c236ae67a0b6535189fd97.png" alt="카드 등록 화면">
+      <div class="hero-img animate__animated animate__fadeInUp">
+        <img src="img%20asset/Group%202085664800.png" alt="트래블월렛 카드와 QR" />
       </div>
-      <a class="btn btn-dark" href="#">내 카드번호 확인하기</a>
-    </section>
+    </div>
+  </section>
 
-    <!-- STEP 2 -->
-    <section class="section">
-      <div class="step-head">
-        <div class="badge">2 단계</div>
-        <div class="lead kakao">
-          <b>전국 카카오페이 가맹점</b>에서<br>
-          <b>결제</b>할 수 있어요.
-        </div>
+  <!-- Section 2: Quiz -->
+  <section class="quiz">
+    <div class="quiz-head">
+      <p class="quiz-label wanted">QUIZ!</p>
+      <div class="quiz-q wanted">
+        <p>일본에서 트래블월렛</p>
+        <p><span class="accent">QR결제가 가능</span>할까?</p>
       </div>
+      <p class="quiz-sub wanted">눌러서 <b>정답을 맞춰보세요!</b></p>
+    </div>
+    <div class="quiz-cards">
+      <div class="card-o"><img src="img%20asset/Group%202085664801.png" alt="O" onclick="openPopup()" /></div>
+      <div class="card-x"><img src="img%20asset/Group%202085664802.png" alt="X" onclick="openRetry()" /></div>
+    </div>
+  </section>
 
-      <div class="stack">
-        <!-- store illustration -->
-        <div class="imgbox">
-          <div class="store-scene">
-            <div class="store">
-              <div class="roof"></div>
-              <div class="body"></div>
-              <div class="door"></div>
-              <div class="flag"></div>
-            </div>
-            <div class="bubble">
-              <div class="b1 kakao">카카오페이</div>
-              <div class="b2 kakao">됩니다.</div>
-              <img class="paylogo" src="http://localhost:3845/assets/671b44d1375384f2efb269f04b2781ccd0ccb958.svg" alt="pay">
+  <!-- Section 3: Savings -->
+  <section class="savings">
+    <div class="savings-inner">
+      <div class="sec-title">
+        <p>같은 여행도,</p>
+        <p class="accent">이만큼 더 아낄 수 있어요</p>
+      </div>
+      <div class="save-list">
+        <div class="save-card">
+          <div class="row">
+            <div class="icon"><img src="img%20asset/fxemoji_japaneseangrymask.png" alt="" /></div>
+            <div class="txt">
+              <p class="main">예쁜 기념품 사고 <span class="accent">60엔 아껴요</span></p>
+              <p class="sub">2,000엔 결제 시</p>
             </div>
           </div>
         </div>
-
-        <!-- plus connector -->
-        <img class="plus" src="http://localhost:3845/assets/ffffd3f48030937aeec5122fcc906326db961d7b.svg" alt="+">
-
-        <!-- promo card -->
-        <div class="promo">
-          <div class="ttl kakao">결제할 때마다<br><b>0.5% 적립</b>받고 싶다면?</div>
-          <div class="coins">
-            <img class="bag" src="http://localhost:3845/assets/fa13e4a3bdfae651ec86f64eaf91384c20a511b8.png" alt="적립">
-            <img class="s1" src="http://localhost:3845/assets/dce330f751f77760a925f6a1a6d5cc8d3837debc.svg" alt="">
-            <img class="s2" src="http://localhost:3845/assets/6d07733ff5e954616f3301c82f5a52293c5f39ca.svg" alt="">
+        <div class="save-card">
+          <div class="row">
+            <div class="icon"><img src="img%20asset/Layer_5.png" alt="" /></div>
+            <div class="txt">
+              <p class="main">맛있는 라멘 먹고 <span class="accent">42엔 아껴요</span></p>
+              <p class="sub">1,400엔 결제 시</p>
+            </div>
           </div>
-          <a class="btn btn-white" href="#">적립 신청 바로가기</a>
+        </div>
+        <div class="save-card">
+          <div class="row">
+            <div class="icon"><img src="img%20asset/image%201.png" alt="" /></div>
+            <div class="txt">
+              <p class="main">놀이공원 가고 <span class="accent">300엔 아껴요</span></p>
+              <p class="sub">10,000엔 결제 시</p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+      <button class="cta" onclick="location.href='mtoong://travel-wallet.com/home'">바로 충전하러 가기</button>
+    </div>
+  </section>
 
+  <!-- Section 4: Currency use -->
+  <section class="currency">
+    <div class="sec-title">
+      <p><span class="accent">충전해둔 일본 엔화</span>를</p>
+      <p><span class="accent">카드, QR로 자유롭게</span> 사용해요</p>
+    </div>
+    <div class="currency-img">
+      <img src="img%20asset/Group%202085664796.png" alt="기존 결제 vs QR결제 수수료 비교" />
+    </div>
+  </section>
+
+  <!-- Section 5: Steps -->
+  <section class="steps">
+    <div class="sec-title">
+      <p>번거로운 등록, 앱 설치없이</p>
+      <p class="accent">트래블월렛 하나면 끝!</p>
+    </div>
+    <div class="steps-body">
+      <div class="steps-list">
+        <div class="step">
+          <span class="num">1</span>
+          <div class="desc"><p>트래블월렛 앱에서 <span class="accent">일본 엔화 충전</span>하고</p></div>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <div class="desc"><p><span class="accent">QR 발급</span>하면</p></div>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <div class="desc"><p><span class="accent">결제 준비</span> 끝!</p></div>
+        </div>
+      </div>
+      <div class="paypay-img">
+        <img src="img%20asset/img_paypay.png" alt="PayPay QR 결제 화면" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Bottom CTA -->
+  <section class="bottom-cta">
+    <button onclick="location.href='mtoong://travel-wallet.com/simple_payment_list?country_code=CNY'">QR발급 바로가기</button>
+  </section>
+
+</div>
+
+<!-- Image popup (correct answer: O) -->
+<div class="popup-overlay" id="popup" onclick="if(event.target===this) closePopup()">
+  <div class="popup-content">
+    <button class="popup-close" onclick="closePopup()" aria-label="닫기">✕</button>
+    <img src="img%20asset/popup.png" alt="팝업 이미지" style="cursor: pointer;" onclick="location.href='mtoong://travel-wallet.com/simple_payment_list?country_code=CNY'" />
   </div>
 </div>
+
+<!-- Text popup (wrong answer: X) -->
+<div class="popup-overlay" id="retry" onclick="if(event.target===this) closeRetry()">
+  <div class="text-popup">
+    <p>다시 도전해 보세요.</p>
+    <button onclick="closeRetry()">확인</button>
+  </div>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById('popup').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    document.getElementById('popup').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openRetry() {
+    document.getElementById('retry').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeRetry() {
+    document.getElementById('retry').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closePopup(); closeRetry(); }
+  });
+</script>
 </body>
 </html>
