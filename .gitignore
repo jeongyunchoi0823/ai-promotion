@@ -11,3 +11,6 @@ Thumbs.db
 
 # Image assets
 img asset/
+
+# Local instructions (contains secrets)
+CLAUDE.md
